@@ -7,6 +7,8 @@ import { carsAdded } from './carsSlice'
 
 
 const AddCarForm = () => {
+    const [validated, setValidated] = useState(false);
+
     const [name, setName] = useState('')
     const [horsepower, setHorsepower] = useState('')
     const [price, setPrice] = useState('')
@@ -20,41 +22,54 @@ const AddCarForm = () => {
     const dispatch = useDispatch()
 
     const handleSubmit = (event) => {
-        event.preventDefault()
+        const form = event.currentTarget
 
-        dispatch(
-            carsAdded({
-                id: nanoid(),
-                name,
-                horsepower,
-                price,
-                category
-            })
-        )
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            event.preventDefault();
+            event.stopPropagation();
+            dispatch(
+                carsAdded({
+                    id: nanoid(),
+                    name,
+                    horsepower,
+                    price,
+                    category
+                })
+            )
+        }
+
+        setValidated(true);
     }
 
     return (
         <div>
             <h2>Add new car</h2>
-            <Form onSubmit={handleSubmit}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group controlId="formCarName">
                     <Form.Label>Car Name</Form.Label>
-                    <Form.Control type="text" value={name} onChange={onNameChanged} placeholder="Enter name of car" />
+                    <Form.Control required type="text" value={name} onChange={onNameChanged} placeholder="Enter name of car" />
+                    <Form.Control.Feedback type="invalid">Please enter a valid car name</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formCarHorsepower">
                     <Form.Label>Horsepower</Form.Label>
-                    <Form.Control type="text" value={horsepower} onChange={onHorsepowerChanged} placeholder="Enter horsepower" />
+                    <Form.Control required type="text" value={horsepower} onChange={onHorsepowerChanged} placeholder="Enter horsepower" />
+                    <Form.Control.Feedback type="invalid">Please the cars horsepower</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formCarPrice">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control type="text" value={price} onChange={onPriceChanged} placeholder="Enter car price" />
+                    <Form.Control required  type="text" value={price} onChange={onPriceChanged} placeholder="Enter car price" />
+                    <Form.Control.Feedback type="invalid">Please enter a price of the car</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formCarCategory">
                     <Form.Label>Category</Form.Label>
-                    <Form.Control type="text" value={category} onChange={onCategoryChanged} placeholder="Enter car category" />
+                    <Form.Control required  type="text" value={category} onChange={onCategoryChanged} placeholder="Enter car category" />
+                    <Form.Control.Feedback type="invalid">Please enter a category for the car</Form.Control.Feedback>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
