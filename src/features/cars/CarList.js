@@ -5,9 +5,9 @@ const CarList = () => {
     const cars = useSelector(state => state.cars)
 
     const renderedCars = cars.map(car => (
-        <div>
-            <h4 key={car.id}>{car.name} <small>{car.type}</small></h4>
-            <p className="car-specs">{car.horsepower}, {car.price} €</p>
+        <div key={car.id}>
+            <h4>{car.name} <small>{car.category}</small></h4>
+            <p className="car-specs">{car.horsepower} PS, {car.price} €</p>
         </div>
     ))
 

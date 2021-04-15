@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = [
-    {id: '1', name: 'VW Golf 8', horsepower: 110, price: 23540, type: 'sedan'},
-    {id: '2', name: 'Hyundai i30', horsepower: 110, price: 19990, type: 'sedan'},
-    {id: '3', name: 'Ford Focus', horsepower: 125, price: 23400, type: 'sedan'}
+    {id: '1', name: 'VW Golf 8', horsepower: 110, price: 23540, category: 'sedan'},
+    {id: '2', name: 'Hyundai i30', horsepower: 110, price: 19990, category: 'sedan'},
+    {id: '3', name: 'Ford Focus', horsepower: 125, price: 23400, category: 'sedan'}
 ]
 
 const carsSlice = createSlice({
