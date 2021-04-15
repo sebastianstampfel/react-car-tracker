@@ -1,18 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 
 import { Form, Button } from 'react-bootstrap'
-import { carsAdded } from './carsSlice'
+import { carsAdded, carsUpdated } from './carsSlice'
 
 
-const AddCarForm = () => {
+const AddCarForm = ({ edit, car }) => {
     const [validated, setValidated] = useState(false);
 
-    const [name, setName] = useState('')
-    const [horsepower, setHorsepower] = useState('')
-    const [price, setPrice] = useState('')
-    const [category, setCategory] = useState('')
+    let defaultName, defaultHorsepower, defaultPrice, defaultCategory, defaultCarId
+
+    if(edit && !(Object.keys(car).length === 0 && car.constructor === Object)){
+        defaultName = car.name
+        defaultHorsepower = car.horsepower
+        defaultPrice = car.price
+        defaultCategory = car.category
+        defaultCarId = car.id
+    } else {
+        defaultName = ''
+        defaultHorsepower = ''
+        defaultPrice = ''
+        defaultCategory = ''
+        defaultCarId = 0
+    }
+
+    const [name, setName] = useState(defaultName)
+    const [horsepower, setHorsepower] = useState(defaultHorsepower)
+    const [price, setPrice] = useState(defaultPrice)
+    const [category, setCategory] = useState(defaultCategory)
+    const [carId, setCarId] = useState(defaultCarId)
 
     const onNameChanged = e => setName(e.target.value)
     const onHorsepowerChanged = e => setHorsepower(e.target.value)
@@ -30,15 +48,27 @@ const AddCarForm = () => {
         } else {
             event.preventDefault();
             event.stopPropagation();
-            dispatch(
-                carsAdded({
-                    id: nanoid(),
-                    name,
-                    horsepower,
-                    price,
-                    category
-                })
-            )
+            if (edit) {
+                dispatch(
+                    carsUpdated({
+                        id: carId,
+                        name,
+                        horsepower,
+                        price,
+                        category
+                    })
+                )
+            } else {
+                dispatch(
+                    carsAdded({
+                        id: nanoid(),
+                        name,
+                        horsepower,
+                        price,
+                        category
+                    })
+                )
+            }
         }
 
         setValidated(true);
@@ -46,7 +76,7 @@ const AddCarForm = () => {
 
     return (
         <div>
-            <h2>Add new car</h2>
+            {edit ? '' : <h2>Add new car</h2>}
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group controlId="formCarName">
                     <Form.Label>Car Name</Form.Label>
@@ -73,11 +103,21 @@ const AddCarForm = () => {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    Add car
+                    {edit ? 'Save changes' : 'Add car'}
                 </Button>
             </Form>
         </div>
     )
+}
+
+AddCarForm.defaultProps = {
+    edit: false,
+    car: {}
+}
+
+AddCarForm.propTypes = {
+    edit: PropTypes.bool,
+    car: PropTypes.object
 }
 
 export default AddCarForm
