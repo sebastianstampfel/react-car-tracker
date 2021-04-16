@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Modal, Row, Col } from 'react-bootstrap'
 import CategoryList from './CategoryList'
+import AddCategoryForm from './AddCategoryForm'
 
 
 const Categories = () => {
@@ -29,7 +30,7 @@ const Categories = () => {
                         </Col>
                         
                         <Col>
-                            <p>Form goes here</p>
+                            <AddCategoryForm />
                         </Col>
                     </Row>
                 </Modal.Body>
