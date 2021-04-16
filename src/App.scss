@@ -1,4 +1,69 @@
-.car-specs {
-  margin: 0;
-  padding: 0;
+$first-grey: #44484a;
+$second-grey: #a7b2b8;
+$third-grey: #d8e3e7;
+
+.car-list-container {
+  margin-top: .5em;
+
+  .car-entry {
+    border-bottom: 1px solid $second-grey;
+    border-left: 5px solid rgba(0,0,0,0);
+    padding-left: .5em;
+    h4 {
+      margin: 0;
+
+      small {
+        font-style: italic;
+      }
+    }
+
+    .car-specs {
+      margin: 0 0 .5em 0;
+      padding: 0;
+    }
+
+    button {
+      margin-bottom: .5em;
+    }
+
+    button.edit-button {
+      margin-right: .5em;
+    }
+  }
+
+  .car-entry:last-child {
+    border-bottom: none;
+  }
+
+  .car-entry:hover {
+    //background-color: #daf8fc;
+    border-left: 5px solid #126e82;
+  }
+
+  .no-cars-info {
+    text-align: center;
+    padding-top: 3em;
+    color: #a6afb4;
+  }
+
+  .double-click-headsup {
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    font-size: 85%;
+    text-align: center;
+  }
+}
+
+.manage-categories-button {
+  margin-top: .5em;
+}
+
+.car-search-box {
+  margin-bottom: .5em;
+}
+
+body {
+  background-color: $third-grey;
+  color: $first-grey;
 }

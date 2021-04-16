@@ -12,7 +12,7 @@ const Categories = () => {
 
     return (
         <div>
-            <Button variant="primary" onClick={ handleShow }>
+            <Button variant="info" size="sm" className={ "manage-categories-button" } onClick={ handleShow }>
                 Manage categories
             </Button>
 

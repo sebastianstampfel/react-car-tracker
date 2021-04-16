@@ -24,9 +24,9 @@ function App() {
         <Row>
           <Col md={4}>
             <AddCarForm />
-          </Col>
-          <Col md={4}>
             <Categories />
+          </Col>
+          <Col md={8}>
             <CarList />
           </Col>
         </Row>
