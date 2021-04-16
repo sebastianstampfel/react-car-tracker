@@ -11,13 +11,10 @@ const CategoryList = () => {
     const categories = useSelector(state => state.categories)
 
     const handleCategoryDeleteClick = (category) => {
-        console.log(`Delete ${category.name}`)
         dispatch(
             categoriesRemoved(category)
         )
     }
-
-    
 
     const renderedCategories = categories.map(category => (
         <ListGroup.Item key={ category.id }>
