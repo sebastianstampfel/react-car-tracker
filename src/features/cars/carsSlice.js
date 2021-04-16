@@ -24,7 +24,7 @@ const carsSlice = createSlice({
         clearCategory(state, action) {
             const newState = state
             newState.forEach(car => {
-                if(car.category == action.payload.categoryId){
+                if(car.category === action.payload.categoryId){
                     car.category = 0
                 }
             })

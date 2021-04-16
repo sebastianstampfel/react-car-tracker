@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Modal } from 'react-bootstrap'
+import { Form,  Modal } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { carsRemoved } from './carsSlice'
 import AddCarForm from './AddCarForm'
@@ -35,20 +35,21 @@ const CarList = () => {
         setNameFilter(e.target.value)
     }
 
-    const handleCarDoubleClick = (car) => {
+    const editCar = (car) => {
         setSelectedCar(car)
         handleShow()
     }
 
     const renderedCars = displayedList.map(car => (
-        <SingleCar key={car.id} car={car} doubleClickHandler={handleCarDoubleClick} deleteHandler={deleteCar} />
+        <SingleCar key={ car.id } car={ car } editHandler={ editCar } deleteHandler={ deleteCar } />
     ))
 
     return (
         <>
-            <div>
-                <Form.Control type="text" value={nameFilter} onChange={onNameFilterChanged} placeholder="Search by name" />
-                {renderedCars}
+            <h3>Car overview</h3>
+            <div className={ "car-list-container" }>
+                <Form.Control className={ "car-search-box" } type="text" value={nameFilter} onChange={onNameFilterChanged} placeholder="Search by name" />
+                {renderedCars.length ? renderedCars : <h3 className={ "no-cars-info" }>No cars to display, add some!</h3>}
             </div>
 
             {/* Modal currently causes a deprecation error if opened.

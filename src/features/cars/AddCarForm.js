@@ -22,7 +22,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
         defaultName = ''
         defaultHorsepower = ''
         defaultPrice = ''
-        defaultCategory = ''
+        defaultCategory = 2
         defaultCarId = 0
     }
 
@@ -48,7 +48,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
     const categories = useSelector(state => state.categories)
 
     const categoryDropdown = categories.map(category => (
-        <option key={ category.id }value={ category.id }>{ category.name }</option>
+        <option key={ category.id } value={ category.id }>{ category.name }</option>
     ))
 
     const handleSubmit = (event) => {
@@ -57,6 +57,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+            setValidated(true);
         } else {
             event.preventDefault();
             event.stopPropagation();
@@ -82,15 +83,19 @@ const AddCarForm = ({ edit, car, onSave }) => {
                         category
                     })
                 )
+
+                setName(defaultName)
+                setHorsepower(defaultHorsepower)
+                setPrice(defaultPrice)
+                setCategory(defaultCategory)
+                setValidated(false)
             }
         }
-
-        setValidated(true);
     }
 
     return (
         <div>
-            {edit ? '' : <h2>Add new car</h2>}
+            {edit ? '' : <h3>Add new car</h3>}
             <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                 <Form.Group controlId="formCarName">
                     <Form.Label>Car Name</Form.Label>
@@ -112,7 +117,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
 
                 <Form.Group controlId="formCarCategorySelect">
                     <Form.Label>Category</Form.Label>
-                    <Form.Control required as="select" onChange={ onCategoryChanged }>
+                    <Form.Control required as="select" defaultValue={ defaultCategory } onChange={ onCategoryChanged }>
                         { categoryDropdown }
                     </Form.Control>
                     <Form.Control.Feedback type="invalid">Please select a category for the car</Form.Control.Feedback>

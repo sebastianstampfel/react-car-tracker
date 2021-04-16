@@ -5,14 +5,18 @@ import { useSelector } from 'react-redux'
 
 
 
-const SingleCar = ({ car, doubleClickHandler, deleteHandler }) => {
+const SingleCar = ({ car, editHandler, deleteHandler }) => {
     const categories = useSelector(state => state.categories)
-    const category = (car.category != 0) ? categories.filter(category => category.id == car.category)[0] : {name: ''}
+    // eslint-disable-next-line
+    const category = (car.category !== 0) ? categories.filter(category => category.id == car.category)[0] : {name: ''}
+
+    console.log(`${car.name} (${car.category}) is a ${category}`)
 
     return (
-        <div onDoubleClick={() => doubleClickHandler(car)}>
+        <div className={"car-entry"}>
             <h4>{ car.name } <small>{ category.name }</small></h4>
             <p className="car-specs">{ car.horsepower } PS, { car.price } €</p>
+            <Button variant="info" className={ "edit-button" } size="sm" onClick={ () => editHandler(car) }>Edit</Button>
             <Button variant="danger" size="sm" onClick={ () => deleteHandler(car) }>Delete</Button>
         </div>
     )

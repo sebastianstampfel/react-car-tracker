@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { nanoid } from '@reduxjs/toolkit'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Form, Button } from 'react-bootstrap'
 import { categoriesAdded } from './categoriesSlice'
 
@@ -39,10 +39,10 @@ const AddCategoryForm = () => {
     return (
         <div>
             <h4>Add new category</h4>
-            <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group controlId="formCategoryName">
                     <Form.Label>Category name</Form.Label>
-                    <Form.Control required type="text" value={ name } onChange={ onNameChanged } placeholder="Enter name for category" />
+                    <Form.Control required type="text" value={name} onChange={onNameChanged} placeholder="Enter name for category" />
                     <Form.Control.Feedback type="invalid">Please enter a valid category name</Form.Control.Feedback>
                 </Form.Group>
 
