@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 
 import CarList from './features/cars/CarList'
 import AddCarForm from './features/cars/AddCarForm'
+import Categories from './features/categories/Categories'
 
 
 import './App.scss';
@@ -25,6 +26,7 @@ function App() {
             <AddCarForm />
           </Col>
           <Col md={4}>
+            <Categories />
             <CarList />
           </Col>
         </Row>
