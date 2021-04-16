@@ -3,6 +3,7 @@ import { ListGroup, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaTimes } from 'react-icons/fa'
 import { categoriesRemoved } from './categoriesSlice'
+import { clearCategory } from '../cars/carsSlice'
 
 
 
@@ -11,6 +12,9 @@ const CategoryList = () => {
     const categories = useSelector(state => state.categories)
 
     const handleCategoryDeleteClick = (category) => {
+        dispatch(
+            clearCategory({categoryId: category.id})
+        )
         dispatch(
             categoriesRemoved(category)
         )

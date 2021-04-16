@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 const SingleCar = ({ car, doubleClickHandler, deleteHandler }) => {
     const categories = useSelector(state => state.categories)
-    const category = categories.filter(category => category.id == car.category)[0]
+    const category = (car.category != 0) ? categories.filter(category => category.id == car.category)[0] : {name: ''}
 
     return (
         <div onDoubleClick={() => doubleClickHandler(car)}>

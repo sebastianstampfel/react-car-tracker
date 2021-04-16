@@ -14,6 +14,7 @@ const categoriesSlice = createSlice({
             state.push(action.payload)
         },
         categoriesRemoved(state, action) {
+            console.log(state)
             return state.filter(category => category.id !== action.payload.id)
         }
     }

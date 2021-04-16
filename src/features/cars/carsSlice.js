@@ -20,10 +20,19 @@ const carsSlice = createSlice({
             const newState = state.filter(car => car.id !== action.payload.id)
             newState.push(action.payload)
             return newState
+        },
+        clearCategory(state, action) {
+            const newState = state
+            newState.forEach(car => {
+                if(car.category == action.payload.categoryId){
+                    car.category = 0
+                }
+            })
+            return newState
         }
     }
 })
 
-export const { carsAdded, carsRemoved, carsUpdated } = carsSlice.actions
+export const { carsAdded, carsRemoved, carsUpdated, clearCategory } = carsSlice.actions
 
 export default carsSlice.reducer
