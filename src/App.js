@@ -8,7 +8,7 @@ import CarList from './features/cars/CarList'
 import AddCarForm from './features/cars/AddCarForm'
 
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
