@@ -49,7 +49,6 @@ const CarList = () => {
             <h2>Car overview</h2>
             <div className={ "car-list-container" }>
                 <Form.Control className={ "car-search-box" } type="text" value={nameFilter} onChange={onNameFilterChanged} placeholder="Search by name" />
-                <p className={ "double-click-headsup" }>Hint: double-click on a car to edit!</p>
                 {renderedCars.length ? renderedCars : <h3 className={ "no-cars-info" }>No cars to display, add some!</h3>}
             </div>
 

@@ -57,6 +57,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+            setValidated(true);
         } else {
             event.preventDefault();
             event.stopPropagation();
@@ -82,10 +83,14 @@ const AddCarForm = ({ edit, car, onSave }) => {
                         category
                     })
                 )
+
+                setName(defaultName)
+                setHorsepower(defaultHorsepower)
+                setPrice(defaultPrice)
+                setCategory(defaultCategory)
+                setValidated(false)
             }
         }
-
-        setValidated(true);
     }
 
     return (
