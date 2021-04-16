@@ -14,10 +14,10 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-      <Container>
+      <Container className={ "app-container" }>
         <Row>
           <Col md={12}>
-            <h1>React Car Tracker</h1>
+            <h1 className={ "header-text" }>Car Tracker</h1>
           </Col>
         </Row>
 
@@ -28,6 +28,18 @@ function App() {
           </Col>
           <Col md={8}>
             <CarList />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+          <div className={ "fake-footer" }>
+            <p>
+              Basic car tracker using React - 
+              2021, <a href="https://github.com/sebastianstampfel/react-car-tracker">
+              Sebastian Stampfel</a>
+            </p>
+          </div>
           </Col>
         </Row>
       </Container>

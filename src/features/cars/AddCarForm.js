@@ -95,7 +95,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
 
     return (
         <div>
-            {edit ? '' : <h2>Add new car</h2>}
+            {edit ? '' : <h3>Add new car</h3>}
             <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                 <Form.Group controlId="formCarName">
                     <Form.Label>Car Name</Form.Label>

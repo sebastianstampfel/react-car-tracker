@@ -46,7 +46,7 @@ const CarList = () => {
 
     return (
         <>
-            <h2>Car overview</h2>
+            <h3>Car overview</h3>
             <div className={ "car-list-container" }>
                 <Form.Control className={ "car-search-box" } type="text" value={nameFilter} onChange={onNameFilterChanged} placeholder="Search by name" />
                 {renderedCars.length ? renderedCars : <h3 className={ "no-cars-info" }>No cars to display, add some!</h3>}
