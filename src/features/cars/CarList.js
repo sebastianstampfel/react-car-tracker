@@ -3,6 +3,7 @@ import { Form, Button, Modal } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { carsRemoved } from './carsSlice'
 import AddCarForm from './AddCarForm'
+import SingleCar from './SingleCar'
 
 
 
@@ -40,11 +41,7 @@ const CarList = () => {
     }
 
     const renderedCars = displayedList.map(car => (
-        <div key={car.id} onDoubleClick={() => handleCarDoubleClick(car)}>
-            <h4>{car.name} <small>{car.category}</small></h4>
-            <p className="car-specs">{car.horsepower} PS, {car.price} €</p>
-            <Button variant="danger" size="sm" onClick={() => deleteCar(car)}>Delete</Button>
-        </div>
+        <SingleCar key={car.id} car={car} doubleClickHandler={handleCarDoubleClick} deleteHandler={deleteCar} />
     ))
 
     return (

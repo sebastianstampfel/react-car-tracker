@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 
 import { Form, Button } from 'react-bootstrap'
@@ -37,9 +37,19 @@ const AddCarForm = ({ edit, car, onSave }) => {
     const onNameChanged = e => setName(e.target.value)
     const onHorsepowerChanged = e => setHorsepower(e.target.value)
     const onPriceChanged = e => setPrice(e.target.value)
-    const onCategoryChanged = e => setCategory(e.target.value)
+    const onCategoryChanged = e => {
+        console.log(e.target.value)
+        setCategory(e.target.value)
+        console.log(category)
+    }
 
     const dispatch = useDispatch()
+
+    const categories = useSelector(state => state.categories)
+
+    const categoryDropdown = categories.map(category => (
+        <option key={ category.id }value={ category.id }>{ category.name }</option>
+    ))
 
     const handleSubmit = (event) => {
         const form = event.currentTarget
@@ -81,29 +91,31 @@ const AddCarForm = ({ edit, car, onSave }) => {
     return (
         <div>
             {edit ? '' : <h2>Add new car</h2>}
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
                 <Form.Group controlId="formCarName">
                     <Form.Label>Car Name</Form.Label>
-                    <Form.Control required type="text" value={name} onChange={onNameChanged} placeholder="Enter name of car" />
+                    <Form.Control required type="text" value={ name } onChange={ onNameChanged } placeholder="Enter name of car" />
                     <Form.Control.Feedback type="invalid">Please enter a valid car name</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formCarHorsepower">
                     <Form.Label>Horsepower</Form.Label>
-                    <Form.Control required type="text" value={horsepower} onChange={onHorsepowerChanged} placeholder="Enter horsepower" />
+                    <Form.Control required type="text" value={ horsepower } onChange={ onHorsepowerChanged } placeholder="Enter horsepower" />
                     <Form.Control.Feedback type="invalid">Please the cars horsepower</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formCarPrice">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control required  type="text" value={price} onChange={onPriceChanged} placeholder="Enter car price" />
+                    <Form.Control required  type="text" value={ price } onChange={ onPriceChanged } placeholder="Enter car price" />
                     <Form.Control.Feedback type="invalid">Please enter a price of the car</Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group controlId="formCarCategory">
+                <Form.Group controlId="formCarCategorySelect">
                     <Form.Label>Category</Form.Label>
-                    <Form.Control required  type="text" value={category} onChange={onCategoryChanged} placeholder="Enter car category" />
-                    <Form.Control.Feedback type="invalid">Please enter a category for the car</Form.Control.Feedback>
+                    <Form.Control required as="select" onChange={ onCategoryChanged }>
+                        { categoryDropdown }
+                    </Form.Control>
+                    <Form.Control.Feedback type="invalid">Please select a category for the car</Form.Control.Feedback>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
