@@ -81,7 +81,7 @@ const CarList = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    {show && <AddCarForm edit={ true } car={ selectedCar }/>}
+                    {show && <AddCarForm edit={ true } car={ selectedCar } onSave={ handleClose }/>}
                 </Modal.Body>
 
                 {/* <Modal.Footer>

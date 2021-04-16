@@ -7,7 +7,7 @@ import { Form, Button } from 'react-bootstrap'
 import { carsAdded, carsUpdated } from './carsSlice'
 
 
-const AddCarForm = ({ edit, car }) => {
+const AddCarForm = ({ edit, car, onSave }) => {
     const [validated, setValidated] = useState(false);
 
     let defaultName, defaultHorsepower, defaultPrice, defaultCategory, defaultCarId
@@ -58,6 +58,8 @@ const AddCarForm = ({ edit, car }) => {
                         category
                     })
                 )
+
+                onSave()
             } else {
                 dispatch(
                     carsAdded({
@@ -112,12 +114,14 @@ const AddCarForm = ({ edit, car }) => {
 
 AddCarForm.defaultProps = {
     edit: false,
-    car: {}
+    car: {},
+    onSave: null
 }
 
 AddCarForm.propTypes = {
     edit: PropTypes.bool,
-    car: PropTypes.object
+    car: PropTypes.object,
+    onSave: PropTypes.func
 }
 
 export default AddCarForm
