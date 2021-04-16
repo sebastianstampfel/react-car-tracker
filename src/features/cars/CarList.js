@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { carsRemoved } from './carsSlice'
-import { Filter } from 'react-lodash'
 import AddCarForm from './AddCarForm'
 
 
@@ -33,20 +32,7 @@ const CarList = () => {
 
     const onNameFilterChanged = e => {
         setNameFilter(e.target.value)
-        /* displayedList = Filter(cars, function(car){
-            return car.name.indexOf(nameFilter)>-1
-        }) */
-
-        /* cars.forEach(car => {
-            if (car.name.includes(nameFilter)){
-                displayedList.push(car)
-            }
-        }) */
-
-        console.log(displayedList)
     }
-
-    let selectedCarForUpdate = {}
 
     const handleCarDoubleClick = (car) => {
         setSelectedCar(car)
@@ -71,7 +57,7 @@ const CarList = () => {
             {/* Modal currently causes a deprecation error if opened.
                 This is a known issue which - as of now - has yet to be
                 fixed. See https://github.com/react-bootstrap/react-bootstrap/issues/5075 
-                TODO: Either find workaround or disable strict mode (not preffered imho) */}
+                TODO: Either find workaround or disable strict mode (not really an option imho) */}
 
             <Modal show={ show } onHide={ handleClose }>
                 <Modal.Header closeButton>

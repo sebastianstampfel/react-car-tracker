@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
@@ -30,6 +30,8 @@ const AddCarForm = ({ edit, car, onSave }) => {
     const [horsepower, setHorsepower] = useState(defaultHorsepower)
     const [price, setPrice] = useState(defaultPrice)
     const [category, setCategory] = useState(defaultCategory)
+
+    // eslint-disable-next-line
     const [carId, setCarId] = useState(defaultCarId)
 
     const onNameChanged = e => setName(e.target.value)
