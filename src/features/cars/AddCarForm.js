@@ -22,7 +22,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
         defaultName = ''
         defaultHorsepower = ''
         defaultPrice = ''
-        defaultCategory = ''
+        defaultCategory = 2
         defaultCarId = 0
     }
 
@@ -48,7 +48,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
     const categories = useSelector(state => state.categories)
 
     const categoryDropdown = categories.map(category => (
-        <option key={ category.id }value={ category.id }>{ category.name }</option>
+        <option key={ category.id } value={ category.id }>{ category.name }</option>
     ))
 
     const handleSubmit = (event) => {
@@ -112,7 +112,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
 
                 <Form.Group controlId="formCarCategorySelect">
                     <Form.Label>Category</Form.Label>
-                    <Form.Control required as="select" onChange={ onCategoryChanged }>
+                    <Form.Control required as="select" defaultValue={ defaultCategory } onChange={ onCategoryChanged }>
                         { categoryDropdown }
                     </Form.Control>
                     <Form.Control.Feedback type="invalid">Please select a category for the car</Form.Control.Feedback>
