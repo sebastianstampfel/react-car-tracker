@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ListGroup, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaTimes } from 'react-icons/fa'
@@ -8,10 +8,15 @@ import { clearCategory } from '../cars/carsSlice'
 
 
 const CategoryList = () => {
+    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+    const toggleShowDeleteAlert = () => setShowDeleteAlert(!showDeleteAlert);
+
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categories)
 
     const handleCategoryDeleteClick = (category) => {
+        toggleShowDeleteAlert()
+
         dispatch(
             clearCategory({categoryId: category.id})
         )
@@ -40,6 +45,7 @@ const CategoryList = () => {
             <ListGroup>
                 { renderedCategories }
             </ListGroup>
+            <p className={ "category-delete-info" }>Hint: If a category is deleted to which cars are currently assigned, the cars will be unassigned and show up with no category!</p>
         </div>
     )
 }

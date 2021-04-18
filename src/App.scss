@@ -89,6 +89,15 @@ body {
   color: $first-grey;
 }
 
+.category-delete-info {
+  font-style: italic;
+  font-size: 75%;
+  background: rgb(240, 240, 240);
+  border-radius: 7px;
+  padding: .5em;
+  margin-top: .75em;
+}
+
 .fake-footer {
   margin-top: 4em;
   font-size: 75%;
