@@ -38,9 +38,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
     const onHorsepowerChanged = e => setHorsepower(e.target.value)
     const onPriceChanged = e => setPrice(e.target.value)
     const onCategoryChanged = e => {
-        console.log(e.target.value)
         setCategory(e.target.value)
-        console.log(category)
     }
 
     const dispatch = useDispatch()
