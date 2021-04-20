@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Car tracker
+
+Simple React app which allows to "manage" cars with basic properties. Cars can also be assigned to categories. Cars and categories are stored in a redux store and the frontend fully implements CRUD operations for cars and categories.
+If a category is deleted to which cars are currently assigned, the cars will be assigned category 0 (so cars and categories are in a pseudo-relationship).
+A simple search - allowing to search for a car by name - is also available. 
+UI is based on react-bootstrap. Basic `create-react-app` configuration is used for linting.
 
 ## Available Scripts
 
