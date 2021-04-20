@@ -22,7 +22,7 @@ const AddCarForm = ({ edit, car, onSave }) => {
         defaultName = ''
         defaultHorsepower = ''
         defaultPrice = ''
-        defaultCategory = 2
+        defaultCategory = 1
         defaultCarId = 0
     }
 
@@ -103,13 +103,13 @@ const AddCarForm = ({ edit, car, onSave }) => {
 
                 <Form.Group controlId="formCarHorsepower">
                     <Form.Label>Horsepower</Form.Label>
-                    <Form.Control required type="text" value={ horsepower } onChange={ onHorsepowerChanged } placeholder="Enter horsepower" />
+                    <Form.Control required type="number" value={ horsepower } onChange={ onHorsepowerChanged } placeholder="Enter horsepower (e.g. 90)" />
                     <Form.Control.Feedback type="invalid">Please the cars horsepower</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formCarPrice">
                     <Form.Label>Price</Form.Label>
-                    <Form.Control required  type="text" value={ price } onChange={ onPriceChanged } placeholder="Enter car price" />
+                    <Form.Control required  type="number" value={ price } onChange={ onPriceChanged } placeholder="Enter car price in Euro (e.g. 90000)" />
                     <Form.Control.Feedback type="invalid">Please enter a price of the car</Form.Control.Feedback>
                 </Form.Group>
 

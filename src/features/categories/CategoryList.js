@@ -47,9 +47,10 @@ const CategoryList = () => {
         <ListGroup.Item key={ category.id }>
             <Row>
                 <Col sm={9}>
-                    { editMode && categoryToEdit.id === category.id ? 
-                    <Form.Control required type="text" value={ categoryToEdit.name } onChange={ onNameChanged } placeholder="Enter name for category" /> :
-                    category.name 
+                    { 
+                        editMode && categoryToEdit.id === category.id ? 
+                        <Form.Control required type="text" value={ categoryToEdit.name } onChange={ onNameChanged } placeholder="Enter name for category" /> :
+                        category.name 
                     }
                 </Col>
 
