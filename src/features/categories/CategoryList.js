@@ -57,13 +57,19 @@ const CategoryList = () => {
                 <Col sm={1}>
                     {
                         editMode && categoryToEdit.id === category.id ? 
-                        <FaSave style={{color: "#333", cursor: "pointer"}} onClick={() => handleCategoryEditSaveClick(category)}/> :
-                        <FaPencilAlt style={{color: "#333", cursor: "pointer"}} onClick={() => handleCategoryEditClick(category)}/> 
+                        <FaSave style={{color: "#126e82", cursor: "pointer"}} onClick={() => handleCategoryEditSaveClick(category)}/> :
+                        editMode && categoryToEdit.id !== category.id ?
+                        '' :
+                        <FaPencilAlt style={{color: "#126e82", cursor: "pointer"}} onClick={() => handleCategoryEditClick(category)}/> 
                     }
                 </Col>
 
                 <Col sm={1}>
-                    <FaTimes style={{color: "red", cursor: "pointer"}} onClick={() => handleCategoryDeleteClick(category)}/>
+                    {   
+                        !editMode ?
+                        <FaTimes style={{color: "red", cursor: "pointer"}} onClick={() => handleCategoryDeleteClick(category)}/> :
+                        ''
+                    }
                 </Col>
             </Row>
              
